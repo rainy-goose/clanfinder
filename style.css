@@ -1,0 +1,45 @@
+
+
+
+
+
+
+h1,h2,p,td,label,legend {
+  color: dodgerblue;
+  font-family: "Segoe UI";
+}
+
+
+
+html {
+  background-color: #282828
+}
+legend, fieldset {
+  color: darkorange;
+
+}
+
+#playerform {
+  display: none;
+}
+
+#clanform {
+  display: none;
+}
+
+
+
+
+#playerresults {
+  display: none;
+
+}
+
+#clanresults {
+  display: none;
+}
+#opt, #opt2 {
+  border: 0;
+  padding-left:0px;
+  margin-left: 0px;
+}
