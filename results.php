@@ -16,10 +16,11 @@ Initial commit: Submitted project for CS248-002 FA19
 <body>
 
 <?php
+    include('dbcon.php');
     // init sql db connection
-
-    // 2020 - this needs to be a seperate file for .gitignore use
-  $con = new mysqli("sql9.freemysqlhosting.net", "sql9314953", "vG2Aysn8k8", "sql9314953");
+    global $db;
+    $sql="";
+    $result=
 
    // if(!con) {
    // echo "failed" . mysqli_connect_error();
@@ -28,10 +29,10 @@ Initial commit: Submitted project for CS248-002 FA19
   // gets post data from form and initializes as php vars
 
   // user vars
-  $igname=$_POST['igname'];
+  $username=$_POST['username'];
   $userid=$_POST['userid'];
   $thlvl=$_POST['thlvl'];
-  $userlocation=$_POST['userlocation'];
+  $location=$_POST['userlocation'];
   // clan vars
   $clanname=$_POST['clanname'];
   $clanid=$_POST['clanid'];
@@ -47,8 +48,9 @@ Initial commit: Submitted project for CS248-002 FA19
   //echo "<br>";
   //echo "clanid is " . $clanid;
 
+// this needs to get sanitized and rewritten if possible
   if($userid==!null){
-        $sql = "INSERT INTO users (igname, userid, thlvl, userlocation, war, cwl, cg) values ('$igname', '$userid', '$thlvl', '$userlocation', '$war', '$cwl', '$cg')";
+        $sql = "INSERT INTO users (username, userid, thlvl, location, war, cwl, cg) values ('$username', '$userid', '$thlvl', '$userlocation', '$war', '$cwl', '$cg')";
 } else if($clanid==!null) {
         $sql = "INSERT INTO clans (clanname, clanid, reqth, clanlocation, war, cwl, cg) values ('$clanname', '$clanid', '$reqth', '$clanlocation', '$war', '$cwl', '$cg')";
         $isPlayer=false;
@@ -66,13 +68,13 @@ Initial commit: Submitted project for CS248-002 FA19
 
 <fieldset>
   <legend>Player Data</legend>
-  <label class="heading" for="igname" id="igname">Username: <?=$igname?></label>
+  <label class="heading" for="username" id="username">Username: <?=$username?></label>
     </br>
   <label class="heading" for="userid" id="userid">User ID: <?=$userid?></label>
     </br>
   <label class="heading" for="thlvl" id="thlvl">Town Hall level: <?=$thlvl?></label>
     </br>
-  <label class="heading" for="userlocation" id="userlocation">Location: <?=$userlocation?></label>
+  <label class="heading" for="userlocation" id="userlocation">Location: <?=$location?></label>
     </br>
 
   <legend>Clan Data</legend>
@@ -97,7 +99,11 @@ Initial commit: Submitted project for CS248-002 FA19
   <input type="button" onClick="showResults()" value="Show Results!">
 </fieldset>
 
-<? if(isPlayer==true) {?>
+
+
+<? if(isPlayer==true) {
+    // i have no idea if these code blocks work, some of my updated code got trashed in a VM
+    ?>
 <div id="playerresults">
     <fieldset>
     <legend>Matched Clan Results</legend>
@@ -110,7 +116,9 @@ Initial commit: Submitted project for CS248-002 FA19
 <div id="clanresults">
   <fieldset>
     <legend>Matched Player Results</legend>
-    <? $sql2="select * from clans where clanlocation='$userlocation';";
+    <?
+    // these could use more rewriting- match user/clan with more accurate results.
+    $sql2="select * from clans where clanlocation='$userlocation';";
             $sql3="select * from users where uselocation='$clanlocation';";?>
   </fieldset>
 <? } ?>

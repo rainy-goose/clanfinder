@@ -11,8 +11,8 @@ function clashForm() {
 	var searching = document.getElementById("searching");
 	var recruiting = document.getElementById("recruiting");
 
-	var igname = document.getElementById("igname");
-	var ignameq = document.getElementById("ignameq");
+	var username = document.getElementById("username");
+	var usernameq = document.getElementById("usernameq");
 
 	var userid =document.getElementById("userid");
 	var useridq =document.getElementById("useridq");
@@ -48,11 +48,11 @@ function clashForm() {
 
 	// i'm sure this can get redone in a switch-like statement
 	if(searching.checked) {
-		if (!ignameq.value) {
-			igname.style.color = "red";
+		if (!usernameq.value) {
+			username.style.color = "red";
 			ready++;
 		} else {
-			igname.style.color = "dodgerblue";
+			username.style.color = "dodgerblue";
 		}
 		if (!useridq.value) {
 			userid.style.color = "red";

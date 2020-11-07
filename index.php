@@ -39,8 +39,8 @@ Initial commit: Submitted project for CS248-002 FA19
 <fieldset>
   <legend>Player Data</legend>
 
-  <label class="heading" id="igname">Username: </label>
-  <input type="text" name="igname" id="ignameq"/><br/>
+  <label class="heading" id="username">Username: </label>
+  <input type="text" name="username" id="usernameq"/><br/>
 
   <label class="heading" id="userid">User ID: </label>
   <input type="text" name="userid" id="useridq"/><br/>
